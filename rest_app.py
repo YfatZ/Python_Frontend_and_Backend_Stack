@@ -1,6 +1,9 @@
 import flask
 import requests
 
+import os
+import signal
+
 import pymysql
 from flask import Flask, request
 
@@ -103,6 +106,15 @@ def user(user_id):
             # On error:
             return {'status': 'Error', 'reason': 'no such id'}, 500 # status code
 
+# In order to add automatic termination to the REST Api server
+@app.route('/stop_server')
+def stop_server():
+    os.kill(os.getpid(), signal.CTRL_C_EVENT)
+    return 'Server stopped'
+
 
 # run the app:
 app.run(host='127.0.0.1', debug=True, port=5000)
+
+
+
