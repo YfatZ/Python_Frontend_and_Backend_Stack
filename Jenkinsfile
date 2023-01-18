@@ -9,7 +9,7 @@ pipeline {
                 script {
                     properties([pipelineTriggers([pollSCM('H/30 * * * *')])])
                 }
-                git 'https://github.com/YfatZ/Python_Frontend_and_Backend_Stack.git'
+                git branch: 'main', url: 'https://github.com/YfatZ/Python_Frontend_and_Backend_Stack.git'
             }
         }
         stage('run python') {
