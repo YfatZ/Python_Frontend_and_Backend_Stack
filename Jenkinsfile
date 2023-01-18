@@ -12,17 +12,6 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/YfatZ/Python_Frontend_and_Backend_Stack.git'
             }
         }
-        stage('run python') {
-            steps {
-                script {
-                    if (checkOs() == 'Windows') {
-                        bat 'python 1.py'
-                    } else {
-                        sh 'python 1.py'
-                    }
-                }
-            }
-        }
         stage('run backend server') {
             steps {
                 script {
