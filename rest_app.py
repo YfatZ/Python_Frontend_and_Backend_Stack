@@ -5,7 +5,7 @@ import os
 import signal
 
 import pymysql
-from flask import Flask, request
+from flask import Flask, request, render_template
 
 
 # import all relevant functions from another method :
@@ -111,6 +111,11 @@ def user(user_id):
 def stop_server():
     os.kill(os.getpid(), signal.CTRL_C_EVENT)
     return 'Server stopped'
+
+# Route error handler for non-existing routes - 404
+@app.errorhandler(404)
+def page_not_found(e):
+    return "<title>Page Not Found</title> <h1>Page Not Found - Error 404</h1> <p> Oops! Looks like the page doesn't exist </p>", 404  # status code
 
 
 # run the app:
