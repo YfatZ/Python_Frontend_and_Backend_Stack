@@ -29,7 +29,7 @@ pipeline {
                     if (checkOs() == 'Windows') {
                         bat 'start /min python web_app.py'
                     } else {
-                        sh 'nohup  python web_app.py &'
+                        sh 'nohup python web_app.py &'
                     }
                 }
             }
@@ -71,9 +71,9 @@ pipeline {
             steps {
                 script {
                     if (checkOs() == 'Windows') {
-                        bat 'python clean_environemnt.py'
+                        bat 'python clean_environment.py'
                     } else {
-                        sh 'python clean_environemnt.py'
+                        sh 'python clean_environment.py'
                     }
                 }
             }
